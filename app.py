@@ -1,10 +1,10 @@
 import os
 import utils
-from opts import build_args
 import torch
 import numpy as np
-from model import Net
 import gradio as gr
+from model import Net
+from opts import build_args
 
 class_lst=['Jumping jack','lunging','Left stretching','Raising hand and jumping','Wrist circling',
            'Single dumbbell raising','Dumbbell one-arm shoulder pressing',
