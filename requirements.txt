@@ -1,0 +1,7 @@
+torch=1.7.0
+torchvision=0.8.0
+networkx=2.6.3
+scipy=1.7.3
+numpy=1.21.5
+gradio
+tqdm
