@@ -20,13 +20,13 @@ def weights_init(m):
         m.weight.data.normal_(1.0, 0.02)
         m.bias.data.fill_(0)
 
-def train(epoch,model,train_loader,optimizer,criterion,device):
+def train(epoch,model,mode,train_loader,optimizer,criterion,device):
     model.train()
     running_loss = 0.0
     for data, label in tqdm(train_loader):
         data=data.to(device)
         label=label.to(device)
-        outputs=model(data)
+        outputs=model(data,mode)
 
         loss = criterion(outputs, label)
         loss=loss.mean()
@@ -75,18 +75,20 @@ def main(args):
     model=Net(in_channels=6,num_class=11,graph_args=graph_args,edge_importance_weighting=True)
     model.apply(weights_init)
 
-    model.to(device)
     if args.train_model == "gcn":
         gcn_grad=True
         cnn_grad=False
         model_save_name="best_gcn.pth"
-    elif args.train_model == "cnn":
+        mode='train_gcn'
+    elif args.train_model == "cnn": 
         model.load_state_dict(torch.load(os.path.join(args.checkpoint,"best_gcn.pth")))
         gcn_grad=False
         cnn_grad=True
         model_save_name="best_gcn_cnn.pth"
+        mode='train_cnn'
     else:
         print("Unrecognize model")
+    model.to(device)
 
     for k, v in model.named_parameters():
         if any(x in k.split('.') for x in ['data_bn','st_gcn_networks','edge_importance','fcn']):
@@ -113,7 +115,7 @@ def main(args):
             train_loader=torch.utils.data.DataLoader(train_dataset,batch_size=args.batch_size,shuffle=True,num_workers=1,drop_last=True)
             val_loader=torch.utils.data.DataLoader(val_dataset,batch_size=args.batch_size,shuffle=False,num_workers=1)
             
-            train(epoch,model,train_loader,optimizer,criterion,device)
+            train(epoch,model,mode,train_loader,optimizer,criterion,device)
             acc,test_loss=test(epoch,model,val_loader,criterion,device)
 
             scheduler.step()

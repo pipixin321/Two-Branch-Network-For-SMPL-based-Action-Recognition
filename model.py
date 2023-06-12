@@ -106,8 +106,8 @@ class Net(nn.Module):
         return x_cnn
 
 
-    def forward(self, input):#B,24,6,60
-        mode="infer" #options:["train_gcn","train_cnn","infer"]
+    def forward(self, input, mode='infer'):#B,24,6,60
+        #options:["train_gcn","train_cnn","infer"]
         if mode=="train_gcn":
             preds_gcn=self.gcn_branch(input)
             preds=preds_gcn
