@@ -12,6 +12,10 @@ pip install -r ./requirements.txt
 ```
 
 ### 准备数据
+方法一：
+使用已经提取好的姿态参数：https://pan.baidu.com/s/1CPZ8CN1nY9RgVCn4OllpSQ?pwd=lbaf
+
+方法二:
 1.拍摄视频，视频命名格式为axx_cxx.mp4
 - 如动作0，样本1：a00_c01.mp4
 
@@ -25,6 +29,7 @@ python data_preprocess.py
 ```
 - input:./video_romp_result
 - output:./window_data
+
 
 ## 训练和测试模型
 
