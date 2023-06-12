@@ -1,5 +1,6 @@
 # SMPL Action Recognition Implementation 
 ## 准备工作
+本项目开源地址为：https://github.com/pipixin321/Two-Branch-Network-For-SMPL-based-Action-Recognition.git
 
 ### 推荐的环境
 * Python 3.7
