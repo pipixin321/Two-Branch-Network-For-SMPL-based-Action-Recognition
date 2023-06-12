@@ -20,8 +20,9 @@ pip install -r ./requirements.txt
 - 如动作0，样本1：a00_c01.mp4
 
 2.使用ROMP提取姿态参数
-- input:video_folder
-- output:video_romp_result
+- ROMP: https://github.com/Arthur151/ROMP，
+- input: video_folder
+- output: ideo_romp_result
 
 ### 数据预处理
 ```python
@@ -55,7 +56,8 @@ python main.py --mode infer
 ```python
 python app.py
 ```
-单击本地的URL链接即可进入ui界面
+- 单击本地的URL链接进入ui界面、
+- 将examples文件夹中的姿态参数序列上传并提交
 
 
 
