@@ -35,20 +35,16 @@ python data_preprocess.py
 ## 训练和测试模型
 
 ## 训练gcn部分
-model.py line110 mode改为train_gcn
-
 ```python
 python main.py --mode train  --train_model gcn
 ```
 
 ## 训练cnn部分
-model.py line110 mode改为train_cnn
 ```python
 python main.py --mode train  --train_model cnn
 ```
 
 ## 测试
-model.py line110 mode改为infer
 ```python
 python main.py --mode infer
 ```
